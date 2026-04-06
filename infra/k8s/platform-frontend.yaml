@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgeops-frontend
+  namespace: devops-platform
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: forgeops-frontend
+  template:
+    metadata:
+      labels:
+        app: forgeops-frontend
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: forgeops-frontend
+          image: ghcr.io/your-org/forgeops-frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forgeops-frontend
+  namespace: devops-platform
+spec:
+  type: LoadBalancer
+  selector:
+    app: forgeops-frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+

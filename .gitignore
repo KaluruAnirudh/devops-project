@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+.DS_Store
+coverage/
+frontend/dist/
+backend/data/*.tmp
+backend/data/*.bak
+backend/logs/
+*.log
+jenkins_home/
+

@@ -1,0 +1,54 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: forgeops-backend
+    env_file:
+      - backend/.env
+    environment:
+      JENKINS_URL: http://jenkins:8080
+      FRONTEND_URL: http://localhost:8088
+    volumes:
+      - ./backend/data:/app/data
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    depends_on:
+      - jenkins
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_URL: http://localhost:4000
+    container_name: forgeops-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8088:80"
+    restart: unless-stopped
+
+  jenkins:
+    build:
+      context: .
+      dockerfile: infra/jenkins/Dockerfile
+    container_name: forgeops-jenkins
+    user: root
+    env_file:
+      - backend/.env
+    environment:
+      JAVA_OPTS: "-Djenkins.install.runSetupWizard=false"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./:/workspace
+      - ./infra/jenkins/init.groovy.d:/var/jenkins_home/init.groovy.d
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
