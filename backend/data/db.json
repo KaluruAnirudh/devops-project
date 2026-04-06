@@ -68,9 +68,230 @@
           "updatedAt": "2026-04-06T17:23:53.052Z"
         }
       }
+    },
+    {
+      "id": "663697c0-fccf-4a55-bdc1-c55564c0ac12",
+      "name": "Anirudh",
+      "email": "ani@yahoo.com",
+      "passwordHash": "$2a$10$Zxcb2lejxvq/eM7oCEfQBe45k974qqk91o2mgmC4yD5PutEbyj/uO",
+      "createdAt": "2026-04-06T17:33:45.481Z",
+      "github": {
+        "accessToken": "xVP4zpOnoL2gk+6566rj9R+cK7l6SmYhgMnaAhn242ntUEJOegLoefMTW3Ps1AIr7UW6rNgDidN/BLG97LgcbR8X0z4=",
+        "username": "KaluruAnirudh",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/142243241?v=4",
+        "connectedAt": "2026-04-06T17:33:54.290Z",
+        "selectedRepository": {
+          "id": 1203075640,
+          "name": "node-js-sample",
+          "fullName": "KaluruAnirudh/node-js-sample",
+          "cloneUrl": "https://github.com/KaluruAnirudh/node-js-sample.git",
+          "defaultBranch": "master",
+          "private": false,
+          "installationWebhook": null,
+          "updatedAt": "2026-04-06T17:41:13.925Z"
+        }
+      }
     }
   ],
   "pipelines": [
+    {
+      "id": "d5d7652a-d794-4b85-8645-f4c11e5a09d7",
+      "userId": "663697c0-fccf-4a55-bdc1-c55564c0ac12",
+      "repository": {
+        "id": 1203075640,
+        "name": "node-js-sample",
+        "fullName": "KaluruAnirudh/node-js-sample",
+        "cloneUrl": "https://github.com/KaluruAnirudh/node-js-sample.git",
+        "defaultBranch": "master",
+        "private": false,
+        "installationWebhook": null,
+        "updatedAt": "2026-04-06T17:41:13.925Z"
+      },
+      "source": "manual",
+      "status": "failure",
+      "buildNumber": 12,
+      "queueLocation": "http://jenkins:8080/queue/item/23/",
+      "logs": "Started by user Anirudh\n[Pipeline] Start of Pipeline\n[Pipeline] node\nRunning on Jenkins in /var/jenkins_home/workspace/repo-cicd-engine\n[Pipeline] {\n[Pipeline] timestamps\n[Pipeline] {\n[Pipeline] timeout\n[2026-04-06T17:41:26.075Z] Timeout set to expire in 45 min\n[Pipeline] {\n[Pipeline] stage\n[Pipeline] { (Checkout)\n[Pipeline] withCredentials\n[2026-04-06T17:41:26.199Z] Masking supported pattern matches of $GITHUB_TOKEN\n[Pipeline] {\n[Pipeline] sh\n[2026-04-06T17:41:26.528Z] + echo [stage:checkout][status:start]\n[2026-04-06T17:41:26.528Z] [stage:checkout][status:start]\n[2026-04-06T17:41:26.528Z] + rm -rf application devops\n[2026-04-06T17:41:26.528Z] + git clone https://oauth2:****@github.com/KaluruAnirudh/devops-project.git devops\n[2026-04-06T17:41:26.528Z] Cloning into 'devops'...\n[2026-04-06T17:41:27.873Z] + echo https://github.com/KaluruAnirudh/node-js-sample.git\n[2026-04-06T17:41:27.873Z] + sed s#https://#https://oauth2:****@#\n[2026-04-06T17:41:27.873Z] + AUTHENTICATED_URL=https://oauth2:****@github.com/KaluruAnirudh/node-js-sample.git\n[2026-04-06T17:41:27.873Z] + git clone --branch master https://oauth2:****@github.com/KaluruAnirudh/node-js-sample.git application\n[2026-04-06T17:41:27.873Z] Cloning into 'application'...\n[2026-04-06T17:41:29.219Z] + chmod +x devops/infra/jenkins/auto-commit-version.sh devops/infra/jenkins/build-and-test.sh devops/infra/jenkins/detect-project.sh devops/infra/jenkins/render-dockerfile.sh devops/infra/jenkins/self-heal-deploy.sh\n[2026-04-06T17:41:29.219Z] + echo [stage:checkout][status:success]\n[2026-04-06T17:41:29.219Z] [stage:checkout][status:success]\n[Pipeline] }\n[Pipeline] // withCredentials\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Detect)\n[Pipeline] sh\n[2026-04-06T17:41:29.694Z] + echo [stage:detect][status:start]\n[2026-04-06T17:41:29.694Z] [stage:detect][status:start]\n[2026-04-06T17:41:29.694Z] + ./devops/infra/jenkins/detect-project.sh application\n[2026-04-06T17:41:29.694Z] + PROJECT_TYPE=node\n[2026-04-06T17:41:29.694Z] + echo node\n[2026-04-06T17:41:29.694Z] + echo 3000\n[2026-04-06T17:41:29.694Z] + echo Detected node\n[2026-04-06T17:41:29.694Z] Detected node\n[2026-04-06T17:41:29.694Z] + echo [stage:detect][status:success]\n[2026-04-06T17:41:29.694Z] [stage:detect][status:success]\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Build)\n[Pipeline] sh\n[2026-04-06T17:41:30.111Z] + echo [stage:build][status:start]\n[2026-04-06T17:41:30.111Z] [stage:build][status:start]\n[2026-04-06T17:41:30.111Z] + cat .project-type\n[2026-04-06T17:41:30.111Z] + ./devops/infra/jenkins/build-and-test.sh application node build\n[2026-04-06T17:41:30.112Z] ./devops/infra/jenkins/build-and-test.sh: line 14: npm: command not found\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Test)\nStage \"Test\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Containerize)\nStage \"Containerize\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Auto Commit Metadata)\nStage \"Auto Commit Metadata\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Deploy)\nStage \"Deploy\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Verify)\nStage \"Verify\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] }\n[Pipeline] // timeout\n[Pipeline] }\n[Pipeline] // timestamps\n[Pipeline] }\n[Pipeline] // node\n[Pipeline] End of Pipeline\nERROR: script returned exit code 127\nFinished: FAILURE\n",
+      "stages": [
+        {
+          "key": "checkout",
+          "label": "Checkout",
+          "status": "success"
+        },
+        {
+          "key": "detect",
+          "label": "Detect",
+          "status": "success"
+        },
+        {
+          "key": "build",
+          "label": "Build",
+          "status": "failed"
+        },
+        {
+          "key": "test",
+          "label": "Test",
+          "status": "pending"
+        },
+        {
+          "key": "containerize",
+          "label": "Containerize",
+          "status": "pending"
+        },
+        {
+          "key": "deploy",
+          "label": "Deploy",
+          "status": "pending"
+        },
+        {
+          "key": "verify",
+          "label": "Verify",
+          "status": "pending"
+        },
+        {
+          "key": "selfheal",
+          "label": "Self Heal",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-06T17:41:16.088Z",
+      "updatedAt": "2026-04-06T17:41:44.639Z",
+      "targetEnvironment": "devops-platform",
+      "duration": 5690,
+      "url": "http://localhost:8080/job/repo-cicd-engine/12/"
+    },
+    {
+      "id": "b351f1d8-0e52-4511-993c-70812c892f94",
+      "userId": "663697c0-fccf-4a55-bdc1-c55564c0ac12",
+      "repository": {
+        "id": 1202971703,
+        "name": "Hello-Indunil-for-Jenkins",
+        "fullName": "KaluruAnirudh/Hello-Indunil-for-Jenkins",
+        "cloneUrl": "https://github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git",
+        "defaultBranch": "master",
+        "private": false,
+        "installationWebhook": null,
+        "updatedAt": "2026-04-06T17:36:54.924Z"
+      },
+      "source": "manual",
+      "status": "failure",
+      "buildNumber": 11,
+      "queueLocation": "http://jenkins:8080/queue/item/21/",
+      "logs": "Started by user Anirudh\n[Pipeline] Start of Pipeline\n[Pipeline] node\nRunning on Jenkins in /var/jenkins_home/workspace/repo-cicd-engine\n[Pipeline] {\n[Pipeline] timestamps\n[Pipeline] {\n[Pipeline] timeout\n[2026-04-06T17:37:04.715Z] Timeout set to expire in 45 min\n[Pipeline] {\n[Pipeline] stage\n[Pipeline] { (Checkout)\n[Pipeline] withCredentials\n[2026-04-06T17:37:04.855Z] Masking supported pattern matches of $GITHUB_TOKEN\n[Pipeline] {\n[Pipeline] sh\n[2026-04-06T17:37:05.177Z] + echo [stage:checkout][status:start]\n[2026-04-06T17:37:05.178Z] [stage:checkout][status:start]\n[2026-04-06T17:37:05.178Z] + rm -rf application devops\n[2026-04-06T17:37:05.178Z] + git clone https://oauth2:****@github.com/KaluruAnirudh/devops-project.git devops\n[2026-04-06T17:37:05.178Z] Cloning into 'devops'...\n[2026-04-06T17:37:06.523Z] + echo https://github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git\n[2026-04-06T17:37:06.523Z] + sed s#https://#https://oauth2:****@#\n[2026-04-06T17:37:06.523Z] + AUTHENTICATED_URL=https://oauth2:****@github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git\n[2026-04-06T17:37:06.523Z] + git clone --branch master https://oauth2:****@github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git application\n[2026-04-06T17:37:06.523Z] Cloning into 'application'...\n[2026-04-06T17:37:07.435Z] + chmod +x devops/infra/jenkins/auto-commit-version.sh devops/infra/jenkins/build-and-test.sh devops/infra/jenkins/detect-project.sh devops/infra/jenkins/render-dockerfile.sh devops/infra/jenkins/self-heal-deploy.sh\n[2026-04-06T17:37:07.435Z] + echo [stage:checkout][status:success]\n[2026-04-06T17:37:07.435Z] [stage:checkout][status:success]\n[Pipeline] }\n[Pipeline] // withCredentials\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Detect)\n[Pipeline] sh\n[2026-04-06T17:37:07.919Z] + echo [stage:detect][status:start]\n[2026-04-06T17:37:07.920Z] [stage:detect][status:start]\n[2026-04-06T17:37:07.920Z] + ./devops/infra/jenkins/detect-project.sh application\n[2026-04-06T17:37:07.920Z] Unsupported repository type. Expected Node, Java, Python, or Go project.\n[2026-04-06T17:37:07.920Z] + PROJECT_TYPE=\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Build)\nStage \"Build\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Test)\nStage \"Test\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Containerize)\nStage \"Containerize\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Auto Commit Metadata)\nStage \"Auto Commit Metadata\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Deploy)\nStage \"Deploy\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Verify)\nStage \"Verify\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] }\n[Pipeline] // timeout\n[Pipeline] }\n[Pipeline] // timestamps\n[Pipeline] }\n[Pipeline] // node\n[Pipeline] End of Pipeline\nERROR: script returned exit code 1\nFinished: FAILURE\n",
+      "stages": [
+        {
+          "key": "checkout",
+          "label": "Checkout",
+          "status": "success"
+        },
+        {
+          "key": "detect",
+          "label": "Detect",
+          "status": "failed"
+        },
+        {
+          "key": "build",
+          "label": "Build",
+          "status": "pending"
+        },
+        {
+          "key": "test",
+          "label": "Test",
+          "status": "pending"
+        },
+        {
+          "key": "containerize",
+          "label": "Containerize",
+          "status": "pending"
+        },
+        {
+          "key": "deploy",
+          "label": "Deploy",
+          "status": "pending"
+        },
+        {
+          "key": "verify",
+          "label": "Verify",
+          "status": "pending"
+        },
+        {
+          "key": "selfheal",
+          "label": "Self Heal",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-06T17:36:56.506Z",
+      "updatedAt": "2026-04-06T17:41:44.573Z",
+      "targetEnvironment": "devops-platform",
+      "duration": 4876,
+      "url": "http://localhost:8080/job/repo-cicd-engine/11/"
+    },
+    {
+      "id": "f8fa85b6-e741-4073-83bf-2de499670048",
+      "userId": "663697c0-fccf-4a55-bdc1-c55564c0ac12",
+      "repository": {
+        "id": 1202971703,
+        "name": "Hello-Indunil-for-Jenkins",
+        "fullName": "KaluruAnirudh/Hello-Indunil-for-Jenkins",
+        "cloneUrl": "https://github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git",
+        "defaultBranch": "master",
+        "private": false,
+        "installationWebhook": null,
+        "updatedAt": "2026-04-06T17:34:02.525Z"
+      },
+      "source": "manual",
+      "status": "failure",
+      "buildNumber": 10,
+      "queueLocation": "http://jenkins:8080/queue/item/19/",
+      "logs": "Started by user Anirudh\n[Pipeline] Start of Pipeline\n[Pipeline] node\nRunning on Jenkins in /var/jenkins_home/workspace/repo-cicd-engine\n[Pipeline] {\n[Pipeline] timestamps\n[Pipeline] {\n[Pipeline] timeout\n[2026-04-06T17:34:13.937Z] Timeout set to expire in 45 min\n[Pipeline] {\n[Pipeline] stage\n[Pipeline] { (Checkout)\n[Pipeline] withCredentials\n[2026-04-06T17:34:14.079Z] Masking supported pattern matches of $GITHUB_TOKEN\n[Pipeline] {\n[Pipeline] sh\n[2026-04-06T17:34:14.398Z] + echo [stage:checkout][status:start]\n[2026-04-06T17:34:14.398Z] [stage:checkout][status:start]\n[2026-04-06T17:34:14.398Z] + rm -rf application devops\n[2026-04-06T17:34:14.400Z] + git clone https://oauth2:****@github.com/KaluruAnirudh/devops-project.git devops\n[2026-04-06T17:34:14.400Z] Cloning into 'devops'...\n[2026-04-06T17:34:15.745Z] + echo https://github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git\n[2026-04-06T17:34:15.745Z] + sed s#https://#https://oauth2:****@#\n[2026-04-06T17:34:15.745Z] + AUTHENTICATED_URL=https://oauth2:****@github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git\n[2026-04-06T17:34:15.745Z] + git clone --branch master https://oauth2:****@github.com/KaluruAnirudh/Hello-Indunil-for-Jenkins.git application\n[2026-04-06T17:34:15.745Z] Cloning into 'application'...\n[2026-04-06T17:34:16.794Z] + echo [stage:checkout][status:success]\n[2026-04-06T17:34:16.794Z] [stage:checkout][status:success]\n[Pipeline] }\n[Pipeline] // withCredentials\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Detect)\n[Pipeline] sh\n[2026-04-06T17:34:17.298Z] + echo [stage:detect][status:start]\n[2026-04-06T17:34:17.298Z] [stage:detect][status:start]\n[2026-04-06T17:34:17.298Z] + ./devops/infra/jenkins/detect-project.sh application\n[2026-04-06T17:34:17.298Z] /var/jenkins_home/workspace/repo-cicd-engine@tmp/durable-ad8cb21b/script.sh.copy: 3: ./devops/infra/jenkins/detect-project.sh: Permission denied\n[2026-04-06T17:34:17.298Z] + PROJECT_TYPE=\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Build)\nStage \"Build\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Test)\nStage \"Test\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Containerize)\nStage \"Containerize\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Auto Commit Metadata)\nStage \"Auto Commit Metadata\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Deploy)\nStage \"Deploy\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] stage\n[Pipeline] { (Verify)\nStage \"Verify\" skipped due to earlier failure(s)\n[Pipeline] getContext\n[Pipeline] }\n[Pipeline] // stage\n[Pipeline] }\n[Pipeline] // timeout\n[Pipeline] }\n[Pipeline] // timestamps\n[Pipeline] }\n[Pipeline] // node\n[Pipeline] End of Pipeline\nERROR: script returned exit code 126\nFinished: FAILURE\n",
+      "stages": [
+        {
+          "key": "checkout",
+          "label": "Checkout",
+          "status": "success"
+        },
+        {
+          "key": "detect",
+          "label": "Detect",
+          "status": "failed"
+        },
+        {
+          "key": "build",
+          "label": "Build",
+          "status": "pending"
+        },
+        {
+          "key": "test",
+          "label": "Test",
+          "status": "pending"
+        },
+        {
+          "key": "containerize",
+          "label": "Containerize",
+          "status": "pending"
+        },
+        {
+          "key": "deploy",
+          "label": "Deploy",
+          "status": "pending"
+        },
+        {
+          "key": "verify",
+          "label": "Verify",
+          "status": "pending"
+        },
+        {
+          "key": "selfheal",
+          "label": "Self Heal",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-06T17:34:04.952Z",
+      "updatedAt": "2026-04-06T17:41:44.614Z",
+      "targetEnvironment": "devops-platform",
+      "duration": 5153,
+      "url": "http://localhost:8080/job/repo-cicd-engine/10/"
+    },
     {
       "id": "a290a178-d923-4aea-8462-b0bbdd4d096d",
       "userId": "e56cb37b-50a1-4265-8147-af33c87efee0",
@@ -132,7 +353,7 @@
         }
       ],
       "createdAt": "2026-04-06T17:23:55.178Z",
-      "updatedAt": "2026-04-06T17:24:13.412Z",
+      "updatedAt": "2026-04-06T17:33:11.954Z",
       "targetEnvironment": "devops-platform",
       "duration": 3553,
       "url": "http://localhost:8080/job/repo-cicd-engine/9/"
@@ -198,7 +419,7 @@
         }
       ],
       "createdAt": "2026-04-06T17:11:31.381Z",
-      "updatedAt": "2026-04-06T17:24:13.345Z",
+      "updatedAt": "2026-04-06T17:33:11.901Z",
       "targetEnvironment": "devops-platform",
       "duration": 4287,
       "url": "http://localhost:8080/job/repo-cicd-engine/8/"

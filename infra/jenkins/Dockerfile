@@ -12,8 +12,15 @@ RUN apt-get update \
     gnupg \
     jq \
     lsb-release \
+  \
+  # 🔥 ADD NODE.JS HERE
+  && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+  && apt-get install -y nodejs \
+  \
+  # install kubectl
   && curl -fsSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl" \
   && chmod +x /usr/local/bin/kubectl \
+  \
   && rm -rf /var/lib/apt/lists/*
 
 COPY infra/jenkins/plugins.txt /usr/share/jenkins/ref/plugins.txt
