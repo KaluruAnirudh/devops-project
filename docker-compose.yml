@@ -48,6 +48,8 @@ services:
       - ./:/workspace
       - ./infra/jenkins/init.groovy.d:/var/jenkins_home/init.groovy.d
       - /var/run/docker.sock:/var/run/docker.sock
+      - C:\Users\Kaluru Anirudh\.kube\config-docker:/root/.kube/config
+      - C:\Users\Kaluru Anirudh\.minikube:/root/.minikube
     restart: unless-stopped
 
 volumes:
